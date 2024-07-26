@@ -1,0 +1,46 @@
+{
+  "semi": true,
+  "trailingComma": "all",
+  "printWidth": 100,
+  "tabWidth": 2,
+  "arrowParens": "always",
+  "bracketSpacing": true,
+  "useTabs": false,
+  "overrides": [
+    {
+      "files": "*.scss",
+      "options": {
+        "singleQuote": true
+      }
+    },
+    {
+      "files": "*.tsx",
+      "options": {
+        "singleQuote": true,
+        "jsxSingleQuote": true
+      }
+    },
+    {
+      "files": "*.ts",
+      "options": {
+        "singleQuote": false,
+        "quoteProps": "consistent",
+        "parser": "typescript",
+        "semi": true
+      }
+    },
+    {
+      "files": "*.js",
+      "options": {
+        "singleQuote": false
+      }
+    },
+    {
+      "files": "*.jsx",
+      "options": {
+        "singleQuote": true,
+        "jsxSingleQuote": true
+      }
+    }
+  ]
+}
