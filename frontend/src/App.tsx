@@ -1,15 +1,21 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import { CompanyList } from './pages';
+import { CompanyList, CompanyDetails } from './pages';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <Routes>
-      <Route path='/' element={<CompanyList />}></Route>
-      <Route path='/details/:id' element={<CompanyList />}></Route>
-    </Routes>
+    <div className='app-container'>
+      <Router>
+        <div className='app-content'>
+          <Routes>
+            <Route path='/' element={<CompanyList />} />
+            <Route path='/details/:id' element={<CompanyDetails />} />
+          </Routes>
+        </div>
+      </Router>
+    </div>
   );
-}
+};
 
 export default App;

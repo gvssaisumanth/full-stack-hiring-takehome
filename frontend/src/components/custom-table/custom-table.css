@@ -1,0 +1,35 @@
+.custom-table-container {
+  padding: 16px;
+  margin: 0 auto;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.search-container {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.custom-search-input {
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+.ant-table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+  .custom-search-input {
+    width: 90%;
+  }
+
+  .ant-table-thead > tr > th,
+  .ant-table-tbody > tr > td {
+    white-space: nowrap;
+  }
+}
