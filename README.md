@@ -45,7 +45,7 @@ full-stack-application/
 │   │   ├── pages/
 │   │   ├── App.tsx
 │   │   └── index.html
-│   │   └── tests/
+│   │   └── test/
 │   ├── Dockerfile
 │   └── package.json
 ├── docker-compose.yml
