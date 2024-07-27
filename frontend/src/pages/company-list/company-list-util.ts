@@ -1,13 +1,16 @@
-// import axios from "axios";
+import { companyApi } from "../../services";
 import { ColumnsType } from "../../components";
-import { companiesData } from "./mock-data";
 
 const createColumns = (companyData: any[]): ColumnsType[] => {
   const columns: ColumnsType[] = [];
   const firstObject = companyData[0] || {};
   for (const key in firstObject) {
+    let title = key;
+    if (key === "company_id") {
+      title = "ID";
+    }
     const col = {
-      title: key,
+      title: title,
       dataIndex: key,
     };
     columns.push(col);
@@ -18,12 +21,12 @@ const createColumns = (companyData: any[]): ColumnsType[] => {
 
 export const getCompanyDataAndColumns = async (setCompanyData: Function, setColumns: Function) => {
   try {
-    // const response = await axios.get("https://dummyjson.com/quotes");
-    const companyData = companiesData;
+    const response = await companyApi.getAllCompanies();
+    const companyData = response;
     setCompanyData(companyData);
     const columns: ColumnsType[] = createColumns(companyData);
     setColumns(columns);
   } catch (err) {
-    console.log("error");
+    console.error("Error fetching company Data");
   }
 };

@@ -1,5 +1,6 @@
 .company-details {
   height: 100vh;
+  width: 100%;
 }
 
 .location-list-sider {
@@ -12,6 +13,7 @@
 .map-content {
   height: 100vh;
   position: relative;
+  width: 100%;
 }
 
 .menu-button {
@@ -25,5 +27,9 @@
 @media (max-width: 992px) {
   .menu-button {
     display: block;
+  }
+
+  .location-list-sider {
+    display: none;
   }
 }

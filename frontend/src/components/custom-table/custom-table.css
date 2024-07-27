@@ -16,12 +16,15 @@
   width: 100%;
   max-width: 400px;
   box-sizing: border-box;
+  border-radius: 4px;
 }
 
 .ant-table {
   width: 100%;
   overflow-x: auto;
+  border-collapse: collapse;
 }
+
 .ant-table-tbody > tr:hover {
   cursor: pointer;
 }

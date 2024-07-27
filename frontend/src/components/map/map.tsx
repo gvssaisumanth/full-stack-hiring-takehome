@@ -1,27 +1,22 @@
 import React, { useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
-import { Icon, LatLngBoundsExpression, LatLngExpression, Map as LeafletMap } from 'leaflet';
+import { Icon, LatLngBoundsExpression, LatLngExpression } from 'leaflet';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
-import 'leaflet/dist/leaflet.css';
 import MarkerClusterGroup from 'react-leaflet-cluster';
+import 'leaflet/dist/leaflet.css';
 
+import { Location } from '../../utils/interfaces';
 import icon from '../../assets/office-marker.png';
-import './map.css';
 
-interface Location {
-  location_id: number;
-  company_id: number;
-  name: string;
-  address?: string;
-  latitude: number;
-  longitude: number;
-}
+import './map.css';
 
 interface MapComponentProps {
   locations: Location[];
   selectedLocation: Location | null;
 }
-
+/**
+ * Icon to point on map
+ */
 let customIcon = new Icon({
   iconUrl: icon,
   shadowUrl: iconShadow,
@@ -93,9 +88,9 @@ export const MapComponent: React.FC<MapComponentProps> = ({ locations, selectedL
             position={[location.latitude, location.longitude]}
           >
             <Popup>
-              <strong>Company: {location.name}</strong>
+              <strong>{location.name}</strong>
               <br />
-              Location: {location.address}
+              {location.address}
               <br />
               Company ID: {location.company_id}
             </Popup>

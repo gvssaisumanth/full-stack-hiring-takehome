@@ -36,18 +36,22 @@ export const CustomTable: React.FC<CustomTableProps> = ({
     setData(initialData);
   }, [initialData]);
 
+  /**
+   * filter based on company name
+   * @param value
+   */
   const handleSearch = (value: string) => {
     setSearchText(value);
-    const filteredData = initialData.filter((item) =>
-      `${item['name']}`.toLowerCase().includes(value.toLowerCase()),
-    );
+    const filteredData = initialData.filter((item) => {
+      return `${item['name']}`.toLowerCase().includes(value.toLowerCase());
+    });
     setData(filteredData);
   };
 
   /**
    * We debounce the input onChange events, if not it could update the state variable over and over
    */
-  const debouncedSearch = useCallback(debounce(handleSearch, 300), []);
+  const debouncedSearch = useCallback(debounce(handleSearch, 20), []);
 
   const onRowClick = (record: any) => {
     navigate(`/details/${record.company_id}`);
@@ -56,11 +60,12 @@ export const CustomTable: React.FC<CustomTableProps> = ({
   return (
     <div className='custom-table-container'>
       <div className='search-container'>
-        <Input
+        <Input.Search
           className='custom-search-input'
           placeholder='Search by Company Name'
           value={searchText}
           onChange={(e) => debouncedSearch(e.target.value)}
+          enterButton
         />
       </div>
       <Table

@@ -9,7 +9,7 @@ const App: React.FC = () => {
       <Router>
         <Routes>
           <Route path='/' element={<CompanyList />} />
-          <Route path='/details/:id' element={<CompanyDetails />} />
+          <Route path='/details/:companyId' element={<CompanyDetails />} />
         </Routes>
       </Router>
     </div>

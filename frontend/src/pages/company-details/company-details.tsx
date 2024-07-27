@@ -1,15 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Layout, Drawer, Button } from 'antd';
+import { useParams } from 'react-router-dom';
 import { MenuOutlined } from '@ant-design/icons';
-import { MapComponent, LocationList, Location } from '../../components';
+
+import { MapComponent, LocationList } from '../../components';
+import { Location } from '../../utils/interfaces';
+
 import { location as locations } from './locations-mock-data';
+import { getLocationData } from './company-details-util';
 import './company-details.css';
 
 const { Sider, Content } = Layout;
 
 export const CompanyDetails: React.FC = () => {
+  const { companyId } = useParams<{ companyId: string }>();
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
   const [drawerVisible, setDrawerVisible] = useState(false);
+  const [companyLocations, setCompanyLocations] = useState<Location[]>([]);
+
+  useEffect(() => {
+    if (companyId) getLocationData(companyId, setCompanyLocations);
+  }, []);
 
   const handleSelectLocation = (location: Location) => {
     setSelectedLocation(location);
@@ -37,8 +48,9 @@ export const CompanyDetails: React.FC = () => {
           }
         }}
         trigger={null}
+        collapsible
       >
-        <LocationList locations={locations} onSelectLocation={handleSelectLocation} />
+        <LocationList locations={companyLocations} onSelectLocation={handleSelectLocation} />
       </Sider>
       <Layout>
         <Content className='map-content'>
@@ -48,13 +60,16 @@ export const CompanyDetails: React.FC = () => {
             icon={<MenuOutlined />}
             onClick={showDrawer}
           />
-          <MapComponent locations={locations} selectedLocation={selectedLocation} />
+          <MapComponent locations={companyLocations} selectedLocation={selectedLocation} />
           <Drawer
             title='Locations'
             placement='left'
             closable={true}
             onClose={closeDrawer}
             open={drawerVisible}
+            styles={{
+              body: { padding: 0 },
+            }}
           >
             <LocationList locations={locations} onSelectLocation={handleSelectLocation} />
           </Drawer>
