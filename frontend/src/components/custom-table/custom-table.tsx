@@ -28,11 +28,9 @@ export const CustomTable: React.FC<CustomTableProps> = ({
   data: initialData,
   columns: columns,
 }) => {
-  console.log('initialData', initialData);
   const [data, setData] = useState(initialData);
   const [searchText, setSearchText] = useState('');
   const navigate = useNavigate();
-  console.log('data', data);
 
   useEffect(() => {
     setData(initialData);
@@ -41,7 +39,7 @@ export const CustomTable: React.FC<CustomTableProps> = ({
   const handleSearch = (value: string) => {
     setSearchText(value);
     const filteredData = initialData.filter((item) =>
-      Object.values(item).some((val) => String(val).toLowerCase().includes(value.toLowerCase())),
+      `${item['name']}`.toLowerCase().includes(value.toLowerCase()),
     );
     setData(filteredData);
   };
@@ -60,7 +58,7 @@ export const CustomTable: React.FC<CustomTableProps> = ({
       <div className='search-container'>
         <Input
           className='custom-search-input'
-          placeholder='Search...'
+          placeholder='Search by Company Name'
           value={searchText}
           onChange={(e) => debouncedSearch(e.target.value)}
         />

@@ -1,0 +1,29 @@
+.company-details {
+  height: 100vh;
+}
+
+.location-list-sider {
+  background: #fff !important;
+  overflow: auto;
+  height: 100vh;
+  border-right: 1px solid #ddd;
+}
+
+.map-content {
+  height: 100vh;
+  position: relative;
+}
+
+.menu-button {
+  position: absolute;
+  top: 90px;
+  left: 10px;
+  z-index: 1000;
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .menu-button {
+    display: block;
+  }
+}

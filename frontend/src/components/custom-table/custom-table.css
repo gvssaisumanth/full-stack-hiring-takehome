@@ -22,6 +22,9 @@
   width: 100%;
   overflow-x: auto;
 }
+.ant-table-tbody > tr:hover {
+  cursor: pointer;
+}
 
 @media (max-width: 768px) {
   .custom-search-input {
