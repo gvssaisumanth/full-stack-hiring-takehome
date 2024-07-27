@@ -1,96 +1,90 @@
-# Full-Stack Developer Take-Home Assessment
+# Full-Stack Company Location Viewer
 
 ## Overview
 
-Create a web application that displays a list of companies and their details, including multiple possible locations. The application should have a Python backend API, a React frontend with a two-page structure and map integration, and be containerized using Docker.
+This project is a full-stack web application that displays a list of companies and their details, including multiple possible locations. The application includes a Python backend API, a React frontend with a two-page structure, and map integration. The entire setup is containerized using Docker.
 
 ## Requirements
 
-### Data Structure
+- Python (Flask/FastAPI/Django)
+- React
+- Docker and Docker Compose
 
-The application will use two CSV files:
+## Project Structure
 
-1. companies.csv:
-   - Columns: company_id, name, address, latitude, longitude
+```plaintext
+full-stack-application/
+├── backend/
+│   ├── README.md
+├── data
+│   ├── companies.csv
+│   └── locations.csv
+├── exceptions
+│   └── custom_exceptions.py
+├── main.py
+├── models
+│   ├── company.py
+│   └── location.py
+├── postman_collection
+│   └── collection.json
+├── requirements.txt
+├── routers
+│   ├── companies.py
+│   └── locations.py
+├── services
+│   ├── company_service.py
+│   └── location_service.py
+└── utils
+    └── logger.py
+├── frontend/
+│   ├── public/
+|
+│   ├── src/
+|       ├── assets/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── App.tsx
+│   │   └── index.html
+│   │   └── tests/
+│   ├── Dockerfile
+│   └── package.json
+├── docker-compose.yml
+├── companies.csv
+├── locations.csv
+└── README.md
+```
 
-2. locations.csv:
-   - Columns: location_id, company_id, name, address, latitude, longitude
+## Setup
 
-### Backend (Python)
+### Prerequisites
 
-1. Create a Flask/FastAPI/Django(any python framework only) application that serves as the backend API.
-2. Implement the following endpoints:
-   
-   a. Get all companies (read from companies.csv)
-   
-   b. Get company details by ID (from companies.csv)
-   
-   c. Get all locations for a specific company ID (from locations.csv)
-   
-4. Implement basic error handling and logging.
-5. Provide API Documentation
+```
 
-### Frontend (React)
+- Node.js (version 14.x or later)
+- npm or yarn
+- Docker and Docker Compose
 
-1. Create a React application with routing (e.g., using React Router) for two pages:
-   a. Company List Page
-   b. Company Details Page
+```
 
-2. Company List Page:
-   - Display a list or grid of companies fetched from the backend API.
-   - Each company item should show basic information (name, address).
-   - Implement a search or filter functionality to find companies by name.
-   - Clicking on a company should navigate to the Company Details Page.
+### Environment Variables
 
-3. Company Details Page:
-   - Display detailed information about the selected company (name, address).
-   - Integrate a map component (using Leaflet or Google Maps React) to show the company's main location.
-   - Fetch and display a list of possible locations for the company.
-   - Display the locations list, including name, address, latitude, and longitude for each location.
-   - Implement a creative and user-friendly way to visualize or interact with the locations data. Candidates have the freedom to choose how they want to show this information (e.g., interactive list, map with multiple markers, tabbed interface, etc.).
-   - Show a "Back to List" button to return to the Company List Page.
+Create a .env file in the backend directory and copy the contents of .env.example into it. Replace the values with your actual environment-specific values.
 
-4. Implement responsive design for both desktop and mobile views.
+### Using Docker
 
-### Docker and Docker Compose
+Build and run the containers:
 
-1. Create a Dockerfile for the backend application.
-2. Create a Dockerfile for the frontend application.
-3. Create a docker-compose.yml file that orchestrates both the backend and frontend services.
+```
+docker-compose up --build
+```
 
-## Deliverables
+### Access the application:
 
-1. Source code for both backend and frontend applications.
-2. Dockerfile for each application.
-3. docker-compose.yml file.
-4. README.md with instructions on how to run the application and any additional notes.
-5. Sample CSV files: companies.csv and locations.csv (at least 10 companies and 30 locations).
+Frontend: http://localhost:3000
+Backend API: http://localhost:8000
 
-## Evaluation Criteria
+**Swagger UI:** http://127.0.0.1:8000/docs
 
-- Code quality and organization
-- Proper use of Python, React, and Docker best practices
-- Implementation of routing and state management in React
-- Efficient handling of data from multiple CSV files
-- Creativity and user experience in displaying company locations
-- Error handling and edge cases
-- Documentation and code comments
+### License
 
-## Bonus Points
-
-- Implement unit tests for backend and frontend
-- Add possible data visualizations (e.g., charts) on the Company Details Page
-- Implement an innovative way to compare or analyze multiple locations
-- Swagger UI Doccumentation
-
-## Time Limit
-
-Candidates will have 4 days to complete this assessment. The deadline for submission is Saturday at 4:00 PM EST. Please ensure that you manage your time effectively to showcase your best work within this timeframe.
-We understand that you may have other commitments, so please allocate your time wisely across the various components of the assessment. It's okay if not all features are fully implemented; we're interested in seeing your approach, code quality, and how you prioritize tasks given the time constraint.
-
-## Submission
-
-Please provide a link to a public GitHub repository.
-
-Good luck!
-
+This project is licensed under the MIT License.
