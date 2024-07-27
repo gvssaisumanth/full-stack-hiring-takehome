@@ -1,7 +1,8 @@
 import React, { useState, useCallback, ReactNode, useEffect } from 'react';
 import { Table, Input } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import debounce from 'lodash/debounce';
+
+import debounce from '../../utils/debounce.ts';
 import './custom-table.css';
 
 export interface ColumnsType {

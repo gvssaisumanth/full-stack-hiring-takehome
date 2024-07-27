@@ -19,7 +19,7 @@ export const LocationList: React.FC<LocationListProps> = ({ locations, onSelectL
       <div className='back-button' onClick={() => navigate('/')}>
         <ArrowLeftOutlined /> <span>Back</span>
       </div>
-      {/* <h3>All Available locations for {locations && locations[0].name}</h3> */}
+      <h3>Locations</h3>
       <List
         dataSource={locations}
         renderItem={(location) => (

@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
-import { Icon, LatLngBoundsExpression, LatLngExpression } from 'leaflet';
-import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+import { LatLngBoundsExpression, LatLngExpression } from 'leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import 'leaflet/dist/leaflet.css';
 
 import { Location } from '../../utils/interfaces';
-import icon from '../../assets/office-marker.png';
 
 import './map.css';
 
@@ -14,14 +12,6 @@ interface MapComponentProps {
   locations: Location[];
   selectedLocation: Location | null;
 }
-/**
- * Icon to point on map
- */
-let customIcon = new Icon({
-  iconUrl: icon,
-  shadowUrl: iconShadow,
-  iconSize: [38, 38],
-});
 
 const UpdateMapBounds: React.FC<{ locations: Location[]; selectedLocation: Location | null }> = ({
   locations,
@@ -84,13 +74,13 @@ export const MapComponent: React.FC<MapComponentProps> = ({ locations, selectedL
         {locations.map((location) => (
           <Marker
             key={location.location_id}
-            icon={customIcon}
+            // icon={customIcon}
             position={[location.latitude, location.longitude]}
           >
             <Popup>
-              <strong>{location.name}</strong>
+              <strong>Company: {location.name}</strong>
               <br />
-              {location.address}
+              Location: {location.address}
               <br />
               Company ID: {location.company_id}
             </Popup>
