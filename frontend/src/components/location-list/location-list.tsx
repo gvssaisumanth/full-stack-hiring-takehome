@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { Location } from '../../utils/interfaces';
 import './location-list.css';
 
-interface LocationListProps {
+export interface LocationListProps {
   locations: Location[];
   onSelectLocation: (location: Location) => void;
 }
