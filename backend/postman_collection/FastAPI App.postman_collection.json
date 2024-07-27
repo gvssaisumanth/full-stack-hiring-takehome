@@ -1,0 +1,67 @@
+{
+	"info": {
+		"_postman_id": "6038a0ee-a7be-4e73-9e3a-058a7740d6de",
+		"name": "FastAPI App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26464962"
+	},
+	"item": [
+		{
+			"name": "Get All Companies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{server}}/companies",
+					"protocol": "http",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"companies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Company Details by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{server}}/companies/1",
+					"protocol": "http",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"companies",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Locations for a Specific Company ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{server}}/companies/1/locations",
+					"protocol": "http",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"companies",
+						"1",
+						"locations"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
